@@ -1,0 +1,57 @@
+server:
+  servlet:
+    context-path: /
+  port: 8088
+  tomcat:
+    uri-encoding: UTF-8
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    #url: jdbc:mysql://127.0.0.1:3306/lianxirencunchu?serverTimezone=UTC&verifyServerCertificate=false&useSSL=false
+    url: jdbc:mysql://127.0.0.1:3308/lianxirencunchu?serverTimezone=Asia/Shanghai&verifyServerCertificate=false&useSSL=false
+    password: 123456
+  #解决升级 Spring Boot 2.6后，因循环引用导致启动时报错的问题
+  main:
+    allow-circular-references: true
+
+
+  #    hikari:
+#      jdbc-url:
+  #  mvc:
+#    view:
+#      prefix: /
+#      suffix: .jsp
+#    static-path-pattern: /**
+
+
+
+  servlet:
+    multipart:
+      max-file-size: 80MB
+      max-request-size: 50MB
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    generate-ddl: true
+
+  #解决生成vue 报错 FTL stack trace ("~" means nesting-related):
+  #spring.freemarker.settings.classic_compatible=true
+  freemarker:
+    settings:
+      classic_compatible: true
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath:com/mapper/xml/*.xml
+
+
+
+file.path:  D:/workspace_vue/lianxirencunchu/src/main/webapp/upload/
+#file.path: D:/idea-workspace/shuiguoshangcheng/admin/public/file/
+file.domain: http://127.0.0.1:8088/upload/
+
+
